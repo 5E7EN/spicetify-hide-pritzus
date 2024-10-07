@@ -11,5 +11,5 @@ Spiceify extension that hides recommended playlists and images possibly containi
 
 ## Compatibility
 
-Tested on Spotify for Windows v1.2.13.661.ga588f749
+Tested on Spotify for Windows v1.2.13.661.ga588f749  
 Spicetify v2.36.14
