@@ -1,4 +1,30 @@
-const replaceImagesWithGrey = () => {
+function removePlaylists() {
+    const elementsForRemoval = [];
+
+    //* Israel Region
+    // Stay Tuned
+    elementsForRemoval.push(document.querySelectorAll('[aria-label="תשארו מעודכנים"]'));
+
+    //* America Region
+    // Episodes for you
+    // elementsForRemoval.push(document.querySelectorAll('[aria-label="Episodes for you"]'));
+
+    // Popular * (e.g. Popular Albums, Popular Playlists)
+    // elementsForRemoval.push(document.querySelectorAll('[aria-label^="Popular"]'));
+
+    // Featured * (e.g. Featured Charts)
+    // elementsForRemoval.push(document.querySelectorAll('[aria-label^="Featured"]'));
+
+    // Spotify * (e.g. Spotify Playlists)
+    // elementsForRemoval.push(document.querySelectorAll('[aria-label^="Spotify"]'));
+
+    // Remove elements
+    for (const element of elementsForRemoval) {
+        element.forEach((item) => item.remove());
+    }
+}
+
+function replaceImagesWithGrey() {
     // Hide all <img> tags
     const allImages = document.querySelectorAll('img');
 
@@ -28,7 +54,7 @@ const replaceImagesWithGrey = () => {
             }
         }
     });
-};
+}
 
 (async function extension() {
     // Waits for platform to load before running
@@ -40,32 +66,6 @@ const replaceImagesWithGrey = () => {
 
     // const user = await Spicetify.Platform.UserAPI.getUser();
     Spicetify.showNotification('Shmiras Einayim ACTIVATED!');
-
-    const removePlaylists = () => {
-        const elementsForRemoval = [];
-
-        //* Israel Region
-        // Stay Tuned
-        elementsForRemoval.push(document.querySelectorAll('[aria-label="תשארו מעודכנים"]'));
-
-        //* America Region
-        // Episodes for you
-        // elementsForRemoval.push(document.querySelectorAll('[aria-label="Episodes for you"]'));
-
-        // Popular * (e.g. Popular Albums, Popular Playlists)
-        // elementsForRemoval.push(document.querySelectorAll('[aria-label^="Popular"]'));
-
-        // Featured * (e.g. Featured Charts)
-        // elementsForRemoval.push(document.querySelectorAll('[aria-label^="Featured"]'));
-
-        // Spotify * (e.g. Spotify Playlists)
-        // elementsForRemoval.push(document.querySelectorAll('[aria-label^="Spotify"]'));
-
-        // Remove elements
-        for (const element of elementsForRemoval) {
-            element.forEach((item) => item.remove());
-        }
-    };
 
     const rpId = setInterval(removePlaylists, 2000);
     const riwgId = setInterval(replaceImagesWithGrey, 100);
