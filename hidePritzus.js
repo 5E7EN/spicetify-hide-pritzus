@@ -57,16 +57,18 @@ function replaceImagesWithGrey() {
 }
 
 (async function extension() {
-    // Waits for platform to load before running
+    // Wait for platform to load before running
     const UserAPI = Spicetify?.Platform?.UserAPI;
     if (!UserAPI) {
         setTimeout(extension, 500);
         return;
     }
 
+    // Startup
     // const user = await Spicetify.Platform.UserAPI.getUser();
     Spicetify.showNotification('Shmiras Einayim ACTIVATED!');
 
+    // Register intervals
     const rpId = setInterval(removePlaylists, 2000);
     const riwgId = setInterval(replaceImagesWithGrey, 100);
 
